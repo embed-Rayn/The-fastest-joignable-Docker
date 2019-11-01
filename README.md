@@ -15,7 +15,7 @@ Docker의 명령은 docker <명령>
 항상 root 권한(sudo)으로 실행
 ### 이미지 관련 명령어
 | Command | Description | Format<br/>example |
-|---|---:|:---:|
+|:---:|:---|:---|
 | images | 보유한 이미지의 목록 출력 | sudo docker images |
 | search | Docker Hub에서 이미지를 검색 | sudo docker search <검색할 이미지><br/>sudo docker search ubuntu |
 | pull | Docker Hub에서 이미지를 다운로드 | sudo docker pull <이미지 이름>:<태그><br/>sudo docker pull ubuntu:latest |
