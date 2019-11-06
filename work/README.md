@@ -25,26 +25,25 @@ _본 문서는 아래와 같은 규칙을 따라 작성되었습니다._
 3. 사용자는 서버의 루트 권한을 부여하지 않아야 함
 4. 서버가 추가 되었을 때 쉽게 설정 할 수 있는 확장성 고려
 
-### 1. [계획 1]()
-![planA](./planA/PlanA.PNG)
+### 1. [계획 1](https://github.com/embed-Rayn/The-fastest-joignable-Docker/tree/master/work/planA)
 - 컨테이너를 사용자마다(프로젝트 마다) 생성을 합니다.
 - 관리자 권한을 사용자에게 줄 수 없으므로 Jupyter notebook으로 접속하도록 합니다.
 - 각 Jupyter 셀에 `![COMMAND]`를 이용하여 가상환경에 사용자에 맞는 라이브러리를 설치하도록 합니다.
 - CUDA의 경우 로컬에 설치하여 참조하도록 합니다.
 <br/>
-__[당시 작성한 도커 파일](./Dockerfile_1)__ <br/>
-_아래 참고자료에 있는 도커파일에 `pip install` 명령어를 추가하여 실험_ <br/>
-_c.f.)빌드 중 `RUN conda update anaconda`에서 멈추는 경향이 있음_<br/>
 
-### 2. [계획 2]()
-![PlanB](./planB/PlanB.PNG)
+__[당시 작성한 도커 파일](./Dockerfile_1)__
+_아래 참고자료에 있는 도커파일에 `pip install` 명령어를 추가하여 실험_
+_c.f.)빌드 중 `RUN conda update anaconda`에서 멈추는 경향이 있음_
+<br/>
+
+### 2. [계획 2](https://github.com/embed-Rayn/The-fastest-joignable-Docker/tree/master/work/planB)
 - 위의 설계에서는 한 서버에 여러 CUDA 버전을 설치 불가능하다는 생각이 들었습니다.
 - CUDA 및 cuDNN을 컨테이너로 올리고 참조하는 방식을 생각했습니다.
 - 파이썬 버전, 라이브러리는 가상환경으로 처리합니다.
 - 파이썬 라이브러리를 도커 파일 빌드시 같이 설치 할 수 있는 [python 스크립트](./DF_maker.ipynb) 추가
 
-### 3. [계획 3(진행 중)]()
-![PlanC](./planC/PlanC.PNG)
+### 3. [계획 3(진행 중)](https://github.com/embed-Rayn/The-fastest-joignable-Docker/tree/master/work/planC)
 - 이전 도커를 사용하려고 했던 목적은 다음과 같습니다.
 	- 방향 1: 컨테이너를 생성함으로 서버 로컬의 영향 최소화
 	- 방향 2: 도커파일의 설정으로 컨테이너 생성 시 기본 설정 자동화
