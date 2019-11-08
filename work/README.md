@@ -9,7 +9,7 @@ _본 문서는 아래와 같은 규칙을 따라 작성되었습니다._
 <br/>
 
 ## 과정 및 시행 착오
-### 0.공부
+### 0. 공부
 
 - [가장 빨리 만나는 Docker](http://pyrasis.com/docker.html)를 메인 교재로 사용했습니다.
 - 빠르게 도커를 사용하시기 위해서는 컨테이너, 이미지의 개념을 잡고 저의 [book_study](https://github.com/embed-Rayn/The-fastest-joignable-Docker/tree/master/book_study)를 참고하시길 추천드립니다.
