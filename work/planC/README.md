@@ -29,11 +29,18 @@ _본 문서는 아래와 같은 규칙을 따라 작성되었습니다._
 	- 방향 4: 검색 중. 배치파일 이용 예정
 
 ### 3.1 참고자료
--[anaconda 설치 및 PATH 설정](https://m.blog.naver.com/cjh226/220919371679)
--[가상환경에 여러 버전의 CUDA 추가](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77)
+- [anaconda 설치 및 PATH 설정](https://m.blog.naver.com/cjh226/220919371679)
+- [가상환경에 여러 버전의 CUDA 추가](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77)
 
 ### 3.2 과정
-#### 아나콘다 설치
+#### 쿠다 설치 및 설정
+```bash
+#cuda 10.0을 추가로 설치 후 변수 설정
+wget [CUDA 10.0 다운로드 주소] 
+sudo sh [CUDA 10.0 다운로드 주소]
+```
+
+#### 아나콘다 설치와 환경 설정
 ```bash
 wget [아나콘다URL]
 bash -b [아나콘다 파일]
@@ -45,9 +52,29 @@ vim /etc/profile
 source /etc/profile
 ```
 
-#### 쿠다 설치 및 설정
+#### 아나콘다를 위한 user 생성 설정
 ```bash
-#cuda 10.0을 추가로 설치 후 변수 설정
-wget [CUDA 10.0 다운로드 주소] 
-sudo sh [CUDA 10.0 다운로드 주소]
+echo "ID 입력하세요."
+read user_id
+adduser --disabled-password --gecos '' $user_id
+adduser $user_id sudo
+echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+passwd $user_id
+
+chmod a+rwx /home/$user_id/
 ```
+#### user별 환경설정 후 가상환경 생성
+```bash
+export PATH=/home/administrator/anaconda3/bin:$PATH
+
+echo "가상환경 이름을 입력하세요. e.g.) keras1_env"
+read env_name
+echo "가상환경에 사용할 파이썬 버전을 입력하세요. e.g) python 3.7이면 3.7입력"
+read py_ver
+conda create -n $env_name pip python=$py_ver
+
+echo "가상환경을 시작합니다. 키는 명령어 conda activate 가상환경이름, 끄는 명령어 conda deactivate"
+conda activate $env_name
+```
+#### 가상환경 별 쿠다 버전 적용
+[가상환경에 여러 버전의 CUDA 추가](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77)
