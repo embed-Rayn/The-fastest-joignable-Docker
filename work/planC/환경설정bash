@@ -1,0 +1,17 @@
+
+mkdir -p ~/anaconda3/envs/tf_cu100/etc/conda/activate.d
+touch ~/anaconda3/envs/tf_cu100/etc/conda/activate.d/activate.sh
+chmod +x ~/anaconda3/envs/tf_cu100/etc/conda/activate.d/activate.sh
+vim ~/anaconda3/envs/tf_cu100/etc/conda/activate.d/activate.sh
+chmod +x ~/anaconda3/envs/tf_cu100/etc/conda/activate.d/activate.sh
+
+#!/bin/sh
+ORIGINAL_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:/usr/local/cuda-10.0/extras/CUPTI/lib64:/lib/nccl/cuda-10:$LD_LIBRARY_PATH
+
+
+
+mkdir -p ~/anaconda3/envs/tf_cu100/etc/conda/deactivate.d
+touch ~/anaconda3/envs/tf_cu100/etc/conda/deactivate.d/deactivate.sh
+vim ~/anaconda3/envs/tf_cu100/etc/conda/deactivate.d/deactivate.sh
+chmod +x ~/anaconda3/envs/tf_cu100/etc/conda/deactivate.d/deactivate.sh
